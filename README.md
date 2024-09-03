@@ -1,45 +1,36 @@
-1. What is an exception’s hierarchy?
+1. What is generic?
 
-All exceptions are throwables, and then within exceptions there are subclasses of exceptions that are either checked or unchecked exceptions.
-Some of these subclasses include Runtime Exceptions, Class Not Found Exceptions, Clone Not Supported Exceptions, and IO Exceptions.
+Generics enable types to be parameters in methods, classes, and interfaces. This allows for stronger type checks at compile time, which helps eliminate bugs in code and runtime errors. It also eliminates the need for type casting. Generics allows for code to be reused on collections of different types.
 
-2. Why do we need the exception hierarchy?
+3. How we can extend generic class, interface?
 
-One of the benefits to having an exception hierarchy is that it simplifies the need for having many catch clauses that can instead be caught by a single super-type exception.
+When using generics, bounds can be set in the declaration of a class, method, or interface, within the diamonds of the type declaration. Using the naming convention for generics, you can declare type T within the diamonds, followed by extends and then a class name. After the class name you can also add any interface names separated by a comma. This then specifies which types can be used as the type arguments in a parameterized type.
 
-3. What exception types do you know?
+4. What is collection hierarchy?
 
-There are mainly two common types of exceptions. These are checked, and unchecked exceptions. Unchecked exceptions are exceptions that occur during runtime, and therefore cannot be predicted.
-Checked exceptions are exceptions that occur at compile time, so they must be handled through try, catch, and finally code blocks before the code will compile.
+The collection hierarchy starts with each class being a subclass of Iterable. Then, within the collection hierarchy, there are sets, lists, queues, and then separately there are also maps.
 
-4. How we can throw an exception in Java?
+5. What are the differences between Set, List, Queue, Map?
 
-In a method declaration, the method can declare an exception that it can throw, and then instead of needing a try, catch block, the exception from the method call is thrown and then handled in a method further up the call stack. 
+A set is a type of collection where objects are stored without duplicates and in no particular order. A list can have duplicates, and will also maintain an insertion order. Queues work similarly to lists, however they function off of FIFO (first in first out) or LIFO (last in first out) methodology. Lastly a map works similarly to a set, except that objects are stored and referenced using key, value pairs unique to each pairing. 
 
-5. How we can handle exceptions in Java (2 ways)?
+6. How we can iterate the Map?
 
-One way we can handle exceptions in Java is through try, catch, and finally blocks. These blocks let you try to execute a block of code, and if an exception is thrown, then the catch block can handle the exception in various ways.
-Another way to handle exceptions is with a try-catch with resources block. For this you must instantiate an object within the try block parameters, and then this will automatically close any resources after the code executes. 
+You can create an iterator object from your map, and then using a loop, you can use iterator methods such as hasNext() to iterate through each item in a map. 
 
-6. When we can use try-catch with resources? What is the requirement?
+7. What do you know about collections with Hash?
 
-For a try-catch with resources block, you must instantiate a new object within the try block parameters. Then once the code is executed, the try-catch with resources block will automatically close any resources still open associated with the object.
-Finally, the catch block will catch and handle any further exceptions that are thrown.
+Collections that use Hash store elements using that element's unique hashCode(). This allows for quick lookup of these elements because each element's hashCode() is unique to that element, and will point directly to the location that the element is stored in the collection. 
 
-7. When finally block will be executed?
+8. Why do we need Iterable interface?
 
-The finally block will always be executed after any try-catch blocks. The finally will always execute no matter what. 
+Implementing the Iterable interface allows users to be able to move through a collection's elements sequentially. 
 
-8. Will you handle RuntimeExceptions in try-catch block?
+9. What is collision? How to handle that?
 
-Runtime exceptions are usually never handled in the same way as checked exceptions unless there are certain specific scenarios that require handling runtime exceptions. 
+A collision occurs when two elements of a Hash collection have the same hashCode(). Collisions can primarily be resolved using one of two methods. Chaining is a method that involves using a linked list at the index of the duplicate hashCode(). The values will be stored in the linked list at that index and can be searched through by value. The other method is called open addressing, and this involves searching for a new open index in the table using a probing sequence that will store the value in the new empty index once one is found. 
 
-9. How to create a custom exception? 
+10. What do you know about threadsafe collections?
 
-Custom exceptions can be created by creating a class that extends the Exception class or any of its subclasses.
-Then within the new class you can create constructors or methods to handle the new custom exception.            
+It can be very important to implement threadsafe collections because if your code is running multiple threads on collections that share mutable data, then there can be issues when multiple threads try to access and change the same data at the same time. You can make your code threadsafe in several ways, but a few of them would be by either making sure you are using immutable data, or you can use the synchronized keyword that will synchronize your threads.
 
-10. What is a logger? Logger levels? What log aggregators do you know?
-
-A logger is what is used to designate what types of information you want to log from your executed code. The logger creates a log event that can then be stored and referenced at a later time.
-The logger levels are used to define, manage, and categorize the importance of a given logged event. Loki, Rsyslog, Splunk, Elk.
