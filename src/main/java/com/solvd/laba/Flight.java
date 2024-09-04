@@ -3,12 +3,19 @@ package com.solvd.laba;
 import com.solvd.laba.myenums.*;
 import com.solvd.laba.customexceptions.DoubleBookException;
 import com.solvd.laba.customexceptions.NullPassengerException;
+import com.solvd.laba.customexceptions.NullSeatException;
 import com.solvd.laba.myinterfaces.FlightInterface;
 import com.solvd.laba.myinterfaces.UniqueIdInterface;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.HashMap;
 
 
 public final class Flight implements UniqueIdInterface, FlightInterface {
 
+    public static LinkedList<Flight> flightList = new LinkedList<>();
+    public Map<Seat, Passenger> mapSeatKey = new HashMap<>();
+    public Map<Passenger, Seat> mapPassengerKey = new HashMap<>();
     private final int ID;
     public static int numFlights = 0;
     private String flightNum, departFrom, arriveTo;
@@ -19,6 +26,7 @@ public final class Flight implements UniqueIdInterface, FlightInterface {
 
     //Flight Object constructor 
     public Flight(AirplaneBase myPlane, String departFrom, String arriveTo) {
+        flightList.add(this);
         this.plane = myPlane;
         this.planeType = myPlane.getPlaneType();
         this.seatsAvailable = planeType.TOTAL_SEATS;
@@ -94,6 +102,12 @@ public final class Flight implements UniqueIdInterface, FlightInterface {
                 default:
                     return false;
             }
+            try {
+                mapPassengerKey.put(person, person.getSeat());
+            } catch (NullSeatException e) {}
+            try {
+                mapSeatKey.put(person.getSeat(), person);
+            } catch (NullSeatException e) {}
             seatsAvailable--;
             addPassenger(person);
             return true;

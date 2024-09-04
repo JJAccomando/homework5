@@ -1,10 +1,10 @@
-2024-09-03 16:02:44.867 [main] INFO  com.solvd.laba.Executor - Program start successful.
-2024-09-03 16:02:44.890 [main] WARN  com.solvd.laba.Executor - Receiving user input.
-2024-09-03 16:02:54.229 [main] INFO  com.solvd.laba.Executor - User input successful.
-2024-09-03 16:02:54.229 [main] WARN  com.solvd.laba.Executor - Over weight luggage created.
-2024-09-03 16:02:54.229 [main] ERROR com.solvd.laba.Executor - Failed to add passenger luggage. Error: {OversizeBagException}
-2024-09-03 16:02:54.229 [main] ERROR com.solvd.laba.Executor - Failed to add passenger luggage. Error: {OverLimitException}
-2024-09-03 16:02:54.229 [main] ERROR com.solvd.laba.Executor - Failed to retrieve passengers information. Error: {NullPassengerException}
-2024-09-03 16:02:54.230 [main] ERROR com.solvd.laba.Executor - Failed to add passenger to flight. Error: {DoubleBookException}
-2024-09-03 16:02:54.230 [main] ERROR com.solvd.laba.Executor - Failed to retrieve seat information. Error: {NullSeatException}
-2024-09-03 16:02:54.230 [main] INFO  com.solvd.laba.Executor - Program success. Shutting down...
+2024-09-03 23:46:51.713 [main] INFO  com.solvd.laba.Executor - Program start successful.
+2024-09-03 23:46:51.787 [main] WARN  com.solvd.laba.Executor - Receiving user input.
+2024-09-03 23:47:01.606 [main] INFO  com.solvd.laba.Executor - User input successful.
+2024-09-03 23:47:01.606 [main] WARN  com.solvd.laba.Executor - Over weight luggage created.
+2024-09-03 23:47:01.606 [main] ERROR com.solvd.laba.Executor - Failed to add passenger luggage. Error: {OversizeBagException}
+2024-09-03 23:47:01.607 [main] ERROR com.solvd.laba.Executor - Failed to add passenger luggage. Error: {OverLimitException}
+2024-09-03 23:47:01.608 [main] ERROR com.solvd.laba.Executor - Failed to retrieve passengers information. Error: {NullPassengerException}
+2024-09-03 23:47:01.608 [main] ERROR com.solvd.laba.Executor - Failed to add passenger to flight. Error: {DoubleBookException}
+2024-09-03 23:47:01.608 [main] ERROR com.solvd.laba.Executor - Failed to retrieve seat information. Error: {NullSeatException}
+2024-09-03 23:47:01.608 [main] INFO  com.solvd.laba.Executor - Program success. Shutting down...

@@ -10,7 +10,7 @@ public class Passenger implements UniqueIdInterface, PassengerInterface {
     private static int numPassengers = 0;
     private String firstName, lastName;
     private int countBags = 0;
-    public Luggage[] myBags = new Luggage[MAX_LUGGAGE];
+    private CustomLinkedList<Luggage> myList = new CustomLinkedList<>();
     private Seat seat;
 
     //Passenger Object constructor 
@@ -49,7 +49,8 @@ public class Passenger implements UniqueIdInterface, PassengerInterface {
             throw new OverLimitException("Passenger has maximum number of luggage!");
         if (bag.isOverweight())
             throw new OversizeBagException("luggage cannot exceed maximum weight of 50lbs!");
-        myBags[countBags++] = bag;
+        myList.add(bag);
+        countBags++;
         return true;
     }
 
@@ -78,10 +79,10 @@ public class Passenger implements UniqueIdInterface, PassengerInterface {
 
     //returns array containing Passenger Object's Luggage Objects if Passenger has at least 1 Luggage
     @Override
-    public final Luggage[] getLuggage() throws NullBagException {
+    public final CustomLinkedList<Luggage> getLuggage() throws NullBagException {
         if (countBags == 0)
             throw new NullBagException("Passenger does not have any luggage!");
-        return myBags;
+        return myList;
     }
 
 
@@ -101,7 +102,7 @@ public class Passenger implements UniqueIdInterface, PassengerInterface {
     //returns a String of a Passenger Object as that Object's "firstName", "lastName",  and ID#
     @Override
     public final String toString() {
-        String myString = String.format("Passenger %1$s %2$s\nPassenger#: %d", firstName, lastName, ID);
+        String myString = String.format("Passenger %1$s %2$s\nPassenger#: %3$d", firstName, lastName, ID);
         return myString;
     }
 

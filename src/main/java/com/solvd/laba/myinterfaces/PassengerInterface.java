@@ -1,5 +1,6 @@
 package com.solvd.laba.myinterfaces;
 
+import com.solvd.laba.CustomLinkedList;
 import com.solvd.laba.Luggage;
 import com.solvd.laba.Seat;
 import com.solvd.laba.customexceptions.*;
@@ -14,6 +15,6 @@ public interface PassengerInterface {
     int getNumBags();
     void setSeatNum(Seat seat) throws DoubleBookException;
     Seat getSeat() throws NullSeatException;
-    Luggage[] getLuggage() throws NullBagException;
+    CustomLinkedList<Luggage> getLuggage() throws NullBagException;
     
 }

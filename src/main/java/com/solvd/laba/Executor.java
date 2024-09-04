@@ -27,6 +27,7 @@ public class Executor {
             lastName = input.nextLine();
         } catch (Exception e) {
             System.out.println("Something went wrong!");
+            logger.error("User input unsuccessful. Error");
         }
         logger.info("User input successful.");
 
@@ -43,10 +44,11 @@ public class Executor {
         try {
             person3.addBags(overweightBag); //Trys to add overweight Luggage to Passenger and throws OversizeBagException
         } catch (OversizeBagException obe) {
-            System.out.println("Cannot add bag to passenger: Bag is overweight!"); 
+            System.out.println(obe.getMessage()); 
             logger.error("Failed to add passenger luggage. Error: {OversizeBagException}");
         } catch (OverLimitException ole) {
-            System.out.println("Cannot add bag to passenger: Bag limit reached!");
+            System.out.println(ole.getMessage());
+            logger.error("Failed to add passenger luggage. Error: {OverLimitException}");
         }
 
         System.out.println(person3.getNumBags()); //Displays 0 since no Luggage was added
@@ -56,14 +58,20 @@ public class Executor {
                 person3.addBags(bags[i]);
             }
         } catch (OversizeBagException obe) {
-            System.out.println("Cannot add bag to passenger: Bag is overweight!");
+            System.out.println(obe.getMessage());
+            logger.error("Failed to add passenger luggage. Error: {OversizeBagException}");
         } catch (OverLimitException ole) {
-            System.out.println("Cannot add bag to passenger: Bag limit reached!");
+            System.out.println(ole.getMessage());
             logger.error("Failed to add passenger luggage. Error: {OverLimitException}");
         }
 
         System.out.println(person3.getNumBags()); //Displays 10 because Passenger has maximum number of Luggage
-        
+        try {
+            System.out.println(person3.getLuggage().toString());
+        } catch (NullBagException nbe) {
+            System.out.println(nbe.getMessage());
+            logger.error("Failed to retrieve passenger luggage information. Error: {NullBagException}");
+        }
 
         try {
             Passenger[] passengers = flight.getPassengers(); //Trys to return Passenger array and throws NullPassengerException because no Passengers were added to Flight yet

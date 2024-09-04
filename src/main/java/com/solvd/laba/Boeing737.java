@@ -18,6 +18,7 @@ public final class Boeing737 extends AirplaneBase {
         this.BUSINESS_CLASS_SEATS = new Seat[PLANE_TYPE.SEATS_IN_BUSINESS];
         this.ECONOMY_CLASS_SEATS = new Seat[PLANE_TYPE.SEATS_IN_ECON];
         this.populateSeats();
+        super.addToMap(this);
     }
 
     //private method used in constructor that assigns Seat arrays with Seat Objects
@@ -148,7 +149,7 @@ public final class Boeing737 extends AirplaneBase {
     //returns a String of an Boeing737 Object as the Object's "COMPANY", "CLASSIFICATION", and ID#
     @Override
     public final String toString() {
-        String myString = String.format("%1$s %2$s\nPlane ID#: %d", PLANE_TYPE.COMPANY, PLANE_TYPE.CLASSIFICATION, ID);
+        String myString = String.format("%1$s %2$s\nPlane ID#: %3$d", PLANE_TYPE.COMPANY, PLANE_TYPE.CLASSIFICATION, ID);
         return myString;
     }
 
